@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: monitoring
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: kmonit.moip.com.br
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000
